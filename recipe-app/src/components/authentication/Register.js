@@ -3,7 +3,7 @@ import FormErrors from "../FormErrors";
 import Validation from "../utilities/Validation";
 
 
-export class Register extends Component{
+class Register extends React.Component{
   constructor() {
     super();
     this.state = {
@@ -15,7 +15,7 @@ export class Register extends Component{
               blankfield: false,
               matchedpassword: false
             }
-        };
+        }
 
         this.username = this.username.bind(this);
         this.email = this.email.bind(this);
@@ -114,3 +114,4 @@ render() {
     );
   }
 }
+export default Register;
