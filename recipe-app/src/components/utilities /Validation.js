@@ -1,4 +1,4 @@
-function validateForm(event, state) {
+export default function validateForm(event, state) {
   // clear all error messages
   const inputs = document.getElementsByClassName("is-danger");
   for (let i = 0; i < inputs.length; i++) {
@@ -19,7 +19,7 @@ function validateForm(event, state) {
     document.getElementById("password").classList.add("is-danger");
     return { blankfield: true };
   }
-  if (state.hasOwnProperty("confirmpassword") && state.confirmpassword === "") {
+  if (state.hasOwnProperty("confirmPassword") && state.confirmpassword === "") {
     document.getElementById("confirmpassword").classList.add("is-danger");
     return { blankfield: true };
   }
@@ -34,5 +34,3 @@ function validateForm(event, state) {
   }
   return;
 }
-
-export default validateForm;
