@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Recipe from "./components/recipe/Recipe";
 import "./App.css";
 //require("dotenv").config();
 
@@ -21,6 +22,7 @@ const App = () => {
     );
     const data = await response.json();
     setRecipes(data.hits);
+    console.log(data.hits);
   };
 
   return (
@@ -31,6 +33,13 @@ const App = () => {
           Search
         </button>
       </form>
+      {recipes.map(recipe => (
+        <Recipe
+          title={recipe.recipe.label}
+          calories={recipe.recipe.calories}
+          image={recipe.recipe.image}
+        />
+      ))}
     </div>
   );
 };
