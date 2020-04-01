@@ -15,14 +15,9 @@ class Register extends React.Component {
         matchedpassword: false
       }
     };
-
-    this.handleRegister = this.handleRegister.bind(this);
   }
 
   handleRegister = async event => {
-    console.log(this.state.email);
-    //fetch api goes here
-
     event.preventDefault();
 
     //Form validation
@@ -30,7 +25,37 @@ class Register extends React.Component {
     const error = Validation(event, this.state);
     if (error) {
       this.setState({
-        errors: { ...this.state.errors, ...error } // ...means its adding on
+        errors: { ...this.state.errors, ...error }
+      });
+    }
+    try {
+      //fetch api
+      const URL = "https://ssdrecipeapi.azurewebsites.net/api/auth/register";
+      await fetch(URL, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          Email: this.state.email,
+          Password: this.state.password
+        })
+      })
+        .then(response => response.json())
+        .then(json => {
+          alert(JSON.stringify(json));
+          this.props.history.push("/");
+        });
+    } catch (error) {
+      //check if error has a message property, if not add one.
+      let err = null;
+      !error.message ? (err = { message: error }) : (err = error);
+      //set form error as a cognito error
+      this.setState({
+        errors: {
+          ...this.state.errors
+        }
       });
     }
   };
