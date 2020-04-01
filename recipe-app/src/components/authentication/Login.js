@@ -1,35 +1,29 @@
 import React, { useState } from "react";
-import FormErrors from "../FormErrors";
-import Validation from "../utilities/Validation ";
+// import FormErrors from "../FormErrors";
+// import Validation from "../utilities/Validation ";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({
-    blankfield: false
-  });
+  //   const [errors, setErrors] = useState({
+  //     blankfield: false
+  //   });
+  const BASE_URL = "http://localhost:5000/api/user/";
 
-  clearErrors = () => {
-    setErrors({
-      errors: {
-        blankfield: false
-      }
-    });
-  };
-
-  handleUsername = (e) => {
-    setUsername(e.target.value);
-  };
-  handlePassword = (e) => {
+  function handleEmail(e) {
+    setEmail(e.target.value);
+  }
+  function handlePassword(e) {
     setPassword(e.target.value);
-  };
+  }
+  //   function handleLogin(e) {
+  //     console.log(email);
+  //   }
 
   async function handleLogin(e) {
-    e.preventDefault();
+    console.log(email);
 
-    //form validation
-    clearErrors();
-    const error = Validation(e, error);
+    e.preventDefault();
 
     //JWT Validation
     await fetch(BASE_URL + "login", {
@@ -53,19 +47,26 @@ export default function Login() {
       .catch((e) => console.log("Unable to sign-in", e));
   }
 
+  //   clearErrors = () => {
+  //    setErrors({
+  //      errors: {
+  //        blankfield: false
+  //      }
+  //    });
+  //  };
+
   return (
     <div>
-      <FormErrors formErrors={errors} />
-
+      {/* <FormErrors formErrors={errors} /> */}
       <form onSubmit={handleLogin}>
         {/* enables enter to work upon submit*/}
         <h2>Login</h2>
         <input
-          type='username'
-          name='username'
-          placeholder='username'
-          value={username}
-          onChange={handleUsername}
+          type='email'
+          name='email'
+          placeholder='Enter Email Address'
+          value={email}
+          onChange={handleEmail}
         />
         <input
           type='password'

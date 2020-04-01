@@ -1,19 +1,21 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router,  Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 import Login from "./components/authentication/Login.js";
+// import Register from "./components/authentication/Register.js";
 
 export default function App() {
   return (
-    <div className='App'>
       <Router>
         <div>
           <Navbar />
-          <Switch>
+          {/* <Switch> */}
             <Route exact path='/' component={Home} />
             <Route exact path='/Login' component={Login} />
-          </Switch>
+            {/* <Route exact path='/Register' component={Register} /> */}
+          {/* </Switch> */}
         </div>
       </Router>
-    </div>
   );
 }
