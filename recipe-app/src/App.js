@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Login from "./components/authentication/Login.js";
+import Register from "./components/authentication/Register.js";
+import Home from "./components/Home";
+import { useEffect, useState } from "react";
 import Recipe from "./components/recipe/Recipe";
 import "./App.css";
 //require("dotenv").config();
@@ -27,31 +33,39 @@ const App = () => {
     console.log(data.hits);
   };
 
-  const updateSearch = e => {
+  const updateSearch = (e) => {
     setSearch(e.target.value);
   };
 
-  const getSearch = e => {
+  const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
     setSearch("");
   };
 
   return (
-    <div className="App">
-      <form onSubmit={getSearch} className="search-form">
+    <div className='App'>
+      <Router>
+        <div>
+          <Navbar />
+          <Route exact path='/' component={Home} />
+          <Route exact path='/Login' component={Login} />
+          <Route exact path='/Register' component={Register} />
+        </div>
+      </Router>
+      <form onSubmit={getSearch} className='search-form'>
         <input
-          className="search-bar"
-          type="text"
+          className='search-bar'
+          type='text'
           value={search}
           onChange={updateSearch}
         />
-        <button className="search-button" type="submit">
+        <button className='search-button' type='submit'>
           Search
         </button>
       </form>
-      <div className="recipes">
-        {recipes.map(recipe => (
+      <div className='recipes'>
+        {recipes.map((recipe) => (
           <Recipe
             key={recipe.recipe.label}
             title={recipe.recipe.label}
