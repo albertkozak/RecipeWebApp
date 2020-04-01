@@ -3,7 +3,7 @@ import Recipe from "./recipe/Recipe";
 //import "./App.css";
 //require("dotenv").config();
 
-const Home = () => {
+const Home = (props) => {
   // Wasted over an hour attempting to hide the APP ID + KEY in .env but kept running into a CORS error (I'll obtain a new ID + KEY later once resolved)
   // const APP_ID = process.env.APP_ID;
   // const APP_KEY = process.env.APP_KEY;
