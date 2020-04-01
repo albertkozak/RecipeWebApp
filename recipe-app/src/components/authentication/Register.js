@@ -19,10 +19,21 @@ class Register extends React.Component {
     this.handleRegister = this.handleRegister.bind(this);
   }
 
-  handleRegister(event) {
-    console.log(this.set.email);
+  handleRegister = async event => {
+    console.log(this.state.email);
     //fetch api goes here
-  }
+
+    event.preventDefault();
+
+    //Form validation
+    this.clearErrors();
+    const error = Validation(event, this.state);
+    if (error) {
+      this.setState({
+        errors: { ...this.state.errors, ...error } // ...means its adding on
+      });
+    }
+  };
 
   clearErrors = () => {
     this.setState({
@@ -30,6 +41,12 @@ class Register extends React.Component {
         blankfield: false,
         matchedpassword: false
       }
+    });
+  };
+
+  onInputChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
     });
   };
 
@@ -46,6 +63,7 @@ class Register extends React.Component {
               id="username"
               placeholder="Enter username"
               value={this.state.username}
+              onChange={this.onInputChange}
             />
             <span className="icon is-small is-left">
               <i className="fas fa-user"></i>
@@ -58,7 +76,7 @@ class Register extends React.Component {
               id="email"
               placeholder="Enter email"
               value={this.state.email}
-              ref={emailInput => (this.email = emailInput)}
+              onChange={this.onInputChange}
             />
             <span className="icon is-small is-left">
               <i className="fas fa-envelope"></i>
@@ -71,6 +89,7 @@ class Register extends React.Component {
               id="password"
               placeholder="Password"
               value={this.state.password}
+              onChange={this.onInputChange}
             />
             <span className="icon is-small is-left">
               <i className="fas fa-lock"></i>
@@ -83,6 +102,7 @@ class Register extends React.Component {
               id="confirmpassword"
               placeholder="Confirm password"
               value={this.state.confirmpassword}
+              onChange={this.onInputChange}
             />
             <span className="icon is-small is-left">
               <i className="fas fa-lock"></i>
