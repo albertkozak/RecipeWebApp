@@ -53,15 +53,15 @@ class Register extends React.Component {
   render() {
     return (
       <div className="reg-form">
-        <h1>Register</h1>
         <FormErrors formerrors={this.state.errors} />
+        <h1>Register</h1>
         <form onSubmit={this.handleRegister}>
           <div className="field">
             <input
               className="input"
               type="text"
               id="username"
-              placeholder="Enter username"
+              placeholder="Username"
               value={this.state.username}
               onChange={this.onInputChange}
             />
@@ -74,7 +74,7 @@ class Register extends React.Component {
               className="input"
               type="email"
               id="email"
-              placeholder="Enter email"
+              placeholder="Email"
               value={this.state.email}
               onChange={this.onInputChange}
             />
@@ -100,7 +100,7 @@ class Register extends React.Component {
               className="input"
               type="password"
               id="confirmpassword"
-              placeholder="Confirm password"
+              placeholder="Confirm Password"
               value={this.state.confirmpassword}
               onChange={this.onInputChange}
             />
