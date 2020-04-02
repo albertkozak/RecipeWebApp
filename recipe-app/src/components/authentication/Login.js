@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import Home from "../Home.js";
 import FormErrors from "../FormErrors";
 // import Validation from "../utilities/Validation ";
 
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({
     blankfield: false
   });
 
-  const BASE_URL = "http://localhost:5000/api/user/";
+  const BASE_URL = "https://ssdrecipeapi.azurewebsites.net/api/auth/login";
 
   function handleEmail(e) {
     setEmail(e.target.value);
@@ -24,7 +25,7 @@ export default function Login() {
     e.preventDefault();
 
     //JWT Validation
-    await fetch(BASE_URL + "login", {
+    await fetch(BASE_URL, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -39,6 +40,7 @@ export default function Login() {
       .then((res) => {
         if (res.status === "OK") {
           sessionStorage.setItem("auth-token", res.token);
+          props.history.push("/");
         }
         console.log(res.token);
       })
