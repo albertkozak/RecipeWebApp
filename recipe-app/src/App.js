@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SaveRecipe from "./components/recipe/SaveRecipe";
 import Navbar from "./components/Navbar";
@@ -10,20 +10,22 @@ import Recipe from "./components/recipe/Recipe";
 import "./App.css";
 //require("dotenv").config();
 
-const App = () => {
-  return (
-    <div>
-      <Router>
-        <div>
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/Login" component={Login} />
-          <Route exact path="/Register" component={Register} />
-          <Route path="/Add" component={SaveRecipe} />
-        </div>
-      </Router>
-    </div>
-  );
-};
-
-export default App;
+export default class App extends Component {
+  render() {
+    const theUserEmail = localStorage.getItem("currentUserEmail");
+    console.log(`UserEmail: ${theUserEmail}`);
+    return (
+      <div>
+        <Router>
+          <div>
+            <Navbar />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/Login" component={Login} />
+            <Route exact path="/Register" component={Register} />
+            {theUserEmail && <Route path="/Add" component={SaveRecipe} />}
+          </div>
+        </Router>
+      </div>
+    );
+  }
+}

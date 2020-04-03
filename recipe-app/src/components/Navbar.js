@@ -13,6 +13,7 @@ import React, { Component } from "react";
 // }
 
 function Navigation() {
+  const theUserEmail = localStorage.getItem("currentUserEmail");
   return (
     <header class="header">
       <input class="menu-btn" type="checkbox" id="menu-btn" />
@@ -29,9 +30,11 @@ function Navigation() {
         <li>
           <a href="/register">Register</a>
         </li>
-        <li>
-          <a href="/Add">Add Recipe</a>
-        </li>
+        {theUserEmail && (
+          <li>
+            <a href="/Add">Add Recipe</a>
+          </li>
+        )}
       </ul>
     </header>
   );

@@ -40,13 +40,13 @@ export default function Login(props) {
       .then(res => {
         if (res.status === "OK") {
           sessionStorage.setItem("auth-token", res.token);
+          localStorage.setItem("currentUserEmail", email);
           props.history.push("/");
         }
         console.log(res.token);
       })
       .catch(e => console.log("Unable to sign-in", e));
   }
-  localStorage.setItem("currentUserEmail", email);
 
   function clearErrors() {
     setErrors({
