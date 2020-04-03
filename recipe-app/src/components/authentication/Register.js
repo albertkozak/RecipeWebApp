@@ -77,68 +77,70 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div className="reg-form">
-        <FormErrors formerrors={this.state.errors} />
-        <h1>Register</h1>
-        <form onSubmit={this.handleRegister}>
-          <div className="field">
-            <input
-              className="input"
-              type="text"
-              id="username"
-              placeholder="Username"
-              value={this.state.username}
-              onChange={this.onInputChange}
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-user"></i>
-            </span>
-          </div>
-          <div className="field">
-            <input
-              className="input"
-              type="email"
-              id="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.onInputChange}
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-envelope"></i>
-            </span>
-          </div>
-          <div className="field">
-            <input
-              className="input"
-              type="password"
-              id="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.onInputChange}
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-lock"></i>
-            </span>
-          </div>
-          <div className="field">
-            <input
-              className="input"
-              type="password"
-              id="confirmpassword"
-              placeholder="Confirm Password"
-              value={this.state.confirmpassword}
-              onChange={this.onInputChange}
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-lock"></i>
-            </span>
-          </div>
-          <div className="field">
-            <p className="control">
-              <button className="button is-success">Register</button>
-            </p>
-          </div>
-        </form>
+      <div className="App">
+        <div className="reg-form">
+          <FormErrors formerrors={this.state.errors} />
+          <h1>Register</h1>
+          <form onSubmit={this.handleRegister}>
+            <div className="field">
+              <input
+                className="input"
+                type="text"
+                id="username"
+                placeholder="Username"
+                value={this.state.username}
+                onChange={this.onInputChange}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-user"></i>
+              </span>
+            </div>
+            <div className="field">
+              <input
+                className="input"
+                type="email"
+                id="email"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.onInputChange}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-envelope"></i>
+              </span>
+            </div>
+            <div className="field">
+              <input
+                className="input"
+                type="password"
+                id="password"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.onInputChange}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-lock"></i>
+              </span>
+            </div>
+            <div className="field">
+              <input
+                className="input"
+                type="password"
+                id="confirmpassword"
+                placeholder="Confirm Password"
+                value={this.state.confirmpassword}
+                onChange={this.onInputChange}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-lock"></i>
+              </span>
+            </div>
+            <div className="field">
+              <p className="control">
+                <button className="button is-success">Register</button>
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
