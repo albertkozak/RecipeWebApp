@@ -5,14 +5,15 @@ class SaveRecipe extends React.Component {
     super();
     this.state = {
       title: "",
-      description: ""
+      description: "",
+      ingredients: ""
     };
     this.SaveToList = this.SaveToList.bind(this);
   }
 
   async SaveToList(e) {
-    console.log(this.state.title);
-    console.log(this.state.description);
+    var ingredientsArray = this.state.ingredients.split("\n");
+    console.log(ingredientsArray.length);
     const URL = "https://ssdrecipeapi.azurewebsites.net/api/Recipes";
     const token = sessionStorage.getItem("auth-token");
     if (token) {
@@ -25,8 +26,8 @@ class SaveRecipe extends React.Component {
         },
         body: JSON.stringify({
           Title: this.state.title,
-          Description: this.state.description
-          //Ingredient: this.props.userName
+          Description: this.state.description,
+          Ingredient: ingredientsArray
         })
       })
         // Response received.
@@ -41,6 +42,7 @@ class SaveRecipe extends React.Component {
         });
     }
   }
+
   onInputChange = event => {
     this.setState({
       [event.target.id]: event.target.value
@@ -64,6 +66,15 @@ class SaveRecipe extends React.Component {
           id="description"
           placeholder="Description"
           value={this.state.description}
+          onChange={this.onInputChange}
+        />
+        <textarea
+          wrap="hard"
+          className="input"
+          type="text"
+          id="ingredients"
+          placeholder="Ingredients"
+          value={this.state.ingredients}
           onChange={this.onInputChange}
         />
         <button className="addButton" onClick={this.SaveToList}>
