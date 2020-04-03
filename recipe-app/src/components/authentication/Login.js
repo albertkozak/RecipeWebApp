@@ -46,6 +46,7 @@ export default function Login(props) {
       })
       .catch(e => console.log("Unable to sign-in", e));
   }
+  localStorage.setItem("currentUserEmail", email);
 
   function clearErrors() {
     setErrors({

@@ -47,6 +47,7 @@ class Register extends React.Component {
           alert(JSON.stringify(json));
           this.props.history.push("/");
         });
+      localStorage.setItem("currentUserEmail", this.state.email);
     } catch (error) {
       //check if error has a message property, if not add one.
       let err = null;
