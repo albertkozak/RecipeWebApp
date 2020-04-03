@@ -36,15 +36,15 @@ export default function Login(props) {
         password
       })
     })
-      .then((response) => response.json())
-      .then((res) => {
+      .then(response => response.json())
+      .then(res => {
         if (res.status === "OK") {
           sessionStorage.setItem("auth-token", res.token);
           props.history.push("/");
         }
         console.log(res.token);
       })
-      .catch((e) => console.log("Unable to sign-in", e));
+      .catch(e => console.log("Unable to sign-in", e));
   }
 
   function clearErrors() {
@@ -56,26 +56,26 @@ export default function Login(props) {
   }
 
   return (
-    <div>
+    <div className="login">
       <FormErrors formErrors={errors} />
+      <h1>Login</h1>
       <form onSubmit={handleLogin}>
         {/* enables enter to work upon submit*/}
-        <h2>Login</h2>
         <input
-          type='email'
-          name='email'
-          placeholder='Enter Email Address'
+          type="email"
+          name="email"
+          placeholder="Email Address"
           value={email}
           onChange={handleEmail}
         />
         <input
-          type='password'
-          name='password'
-          placeholder='Enter Password'
+          type="password"
+          name="password"
+          placeholder="Password"
           value={password}
           onChange={handlePassword}
         />
-        <input type='submit' value='Submit' />
+        <input type="submit" value="Submit" />
       </form>
     </div>
   );
