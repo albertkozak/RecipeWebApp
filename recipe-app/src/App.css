@@ -1,5 +1,7 @@
+/* Google Fonts */
 @import url("https://fonts.googleapis.com/css?family=Bebas+Neue|Fjalla+One|Montserrat&display=swap");
 
+/* Start General */
 body {
   font-family: "Montserrat";
 }
@@ -16,7 +18,9 @@ h1 {
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
   padding: 50px;
 }
+/* End General */
 
+/* Start Search */
 .search-form {
   padding: 2.8rem 0;
   min-height: 10vh;
@@ -41,6 +45,7 @@ h1 {
   color: white;
   border-radius: 10px;
 }
+/* End Search */
 
 .recipes {
   display: flex;
@@ -48,6 +53,7 @@ h1 {
   flex-wrap: wrap;
 }
 
+/* Start Login */
 .login {
   padding-top: 12rem;
   text-align: center;
@@ -65,7 +71,9 @@ h1 {
 .control {
   margin: 0;
 }
+/* End Login */
 
+/* Start Registration */
 .reg-form form {
   display: flex;
   flex-direction: column;
@@ -86,8 +94,10 @@ h1 {
 .reg-form button {
   padding: 0;
 }
+/* End Registration */
 
 /* Start Navigation */
+/* Header */
 .header {
   font-family: "Fjalla One", sans-serif;
   background-color: #1d1d1d;
@@ -119,29 +129,31 @@ h1 {
   background-color: #1d1d1d;
   color: #f8cb15;
 }
+/* End Header */
 
+/* Start Logo */
 .header .logo {
   display: block;
-  font-size: 2em;
-  padding: 10px 20px;
+  font-size: 2rem;
+  padding: 10px;
   text-decoration: none;
   float: left;
 }
 
 .logo img {
-  height: 5.5rem;
+  height: 3rem;
+  padding-left: 0.5rem;
   width: auto;
 }
+/* End Logo */
 
-/* Menu */
+/* Start Menu */
 .header .menu {
   clear: both;
   max-height: 0;
   transition: max-height 0.2s ease-out;
   padding-right: 10px;
 }
-
-/* Menu Icon */
 
 .header .menu-icon {
   cursor: pointer;
@@ -151,7 +163,9 @@ h1 {
   user-select: none;
   float: right;
 }
+/* End Menu */
 
+/* Start Transitions */
 .header .menu-icon .navicon {
   background: #fff;
   display: block;
@@ -181,9 +195,9 @@ h1 {
   top: -5px;
   margin-top: 0.96rem;
 }
+/* End Transition */
 
-/* Menu Button */
-
+/* Start Menu Button */
 .header .menu-btn {
   display: none;
 }
@@ -208,18 +222,21 @@ h1 {
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
   top: 0;
 }
+/* End Menu Button */
 
+/* End Navigation */
+
+/* Start Media Queries */
 @media (min-width: 48em) {
   .header li {
     float: left;
   }
   .header .logo {
-    padding: 0 20px;
+    padding: 20px;
   }
-  /* .header li a {
-    Uncomment below when logo added
+  .header li a {
     padding: 30px;
-  } */
+  }
   .header .menu {
     clear: none;
     float: right;
@@ -228,6 +245,9 @@ h1 {
   .header .menu-icon {
     display: none;
   }
-}
 
-/* End Navigation */
+  .search-form {
+    margin: 3rem;
+  }
+}
+/* End Media Queries */

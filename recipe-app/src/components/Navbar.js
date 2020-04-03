@@ -1,20 +1,12 @@
 import React, { Component } from "react";
-
-// export default class Navbar extends Component {
-//   render() {
-//     return (
-//       <nav className="navbar">
-//         <a href="/">Home</a>
-//         <a href="/login">Login</a>
-//         <a href="/register">Register</a>
-//       </nav>
-//     );
-//   }
-// }
+import logo from "../images/logo3s.png";
 
 function Navigation() {
   return (
     <header class="header">
+      <a href="/" className="logo">
+        <img src={logo} alt="logo" />
+      </a>
       <input class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn">
         <span class="navicon" />
