@@ -3,8 +3,8 @@ import FormErrors from "../FormErrors";
 import Validation from "../utilities/Validation";
 
 class Register extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       email: "",

@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SaveRecipe from "./components/recipe/SaveRecipe";
 import Navbar from "./components/Navbar";
-import Login from "./components/authentication/Login.js";
+import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register.js";
 import Home from "./components/Home";
 import { useEffect, useState } from "react";
@@ -18,6 +19,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Register" component={Register} />
+          <Route path="/Add" component={SaveRecipe} />
         </div>
       </Router>
     </div>

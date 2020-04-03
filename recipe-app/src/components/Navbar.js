@@ -29,6 +29,9 @@ function Navigation() {
         <li>
           <a href="/register">Register</a>
         </li>
+        <li>
+          <a href="/Add">Add Recipe</a>
+        </li>
       </ul>
     </header>
   );
