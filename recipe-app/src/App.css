@@ -68,10 +68,31 @@ h1 {
   max-width: 250px;
 }
 
+.login input,
+.login button {
+  border: none;
+  border-radius: 10px;
+  height: 2.2rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  margin-top: 0.7rem;
+  font-size: 0.75rem;
+}
+
+.login button {
+  padding: 0;
+  color: white;
+  background-color: #1d1d1d;
+  width: 100%;
+  height: 2.4rem;
+}
+
 .control {
   margin: 0;
 }
 /* End Login */
+
+/* End Fields */
 
 /* Start Registration */
 .reg-form form {
@@ -85,6 +106,12 @@ h1 {
 .reg-form input,
 .reg-form button {
   width: 100%;
+  border-radius: 10px;
+  height: 2.2rem;
+  border: none;
+  margin-top: 0.7rem;
+  text-align: center;
+  font-size: 0.75rem;
 }
 
 .reg-form {
@@ -93,6 +120,9 @@ h1 {
 
 .reg-form button {
   padding: 0;
+  color: white;
+  background-color: #1d1d1d;
+  height: 2.6rem;
 }
 /* End Registration */
 

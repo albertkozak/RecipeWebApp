@@ -56,27 +56,31 @@ export default function Login(props) {
   }
 
   return (
-    <div className="login">
-      <FormErrors formErrors={errors} />
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        {/* enables enter to work upon submit*/}
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={email}
-          onChange={handleEmail}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePassword}
-        />
-        <input type="submit" value="Submit" />
-      </form>
+    <div className="App">
+      <div className="login">
+        <FormErrors formErrors={errors} />
+        <h1>Login</h1>
+        <form onSubmit={handleLogin}>
+          {/* enables enter to work upon submit*/}
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={handleEmail}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePassword}
+          />
+          <p className="control">
+            <button className="button is-success">Login</button>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
