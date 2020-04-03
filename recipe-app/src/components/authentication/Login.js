@@ -40,7 +40,8 @@ export default function Login(props) {
       .then(res => {
         if (res.status === "OK") {
           sessionStorage.setItem("auth-token", res.token);
-          localStorage.setItem("currentUserEmail", email);
+          //localStorage.setItem("currentUserEmail", email);
+          sessionStorage.setItem("isAuthorized", "yes");
           props.history.push("/");
         }
         console.log(res.token);

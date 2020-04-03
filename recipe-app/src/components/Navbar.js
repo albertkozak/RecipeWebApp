@@ -13,7 +13,7 @@ import React, { Component } from "react";
 // }
 
 function Navigation() {
-  const theUserEmail = localStorage.getItem("currentUserEmail");
+  const isAllowed = sessionStorage.getItem("isAuthorized");
   return (
     <header class="header">
       <input class="menu-btn" type="checkbox" id="menu-btn" />
@@ -30,7 +30,7 @@ function Navigation() {
         <li>
           <a href="/register">Register</a>
         </li>
-        {theUserEmail && (
+        {isAllowed == "yes" && (
           <li>
             <a href="/Add">Add Recipe</a>
           </li>

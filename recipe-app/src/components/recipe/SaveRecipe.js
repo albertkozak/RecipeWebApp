@@ -13,7 +13,6 @@ class SaveRecipe extends React.Component {
   async SaveToList(e) {
     console.log(this.state.title);
     console.log(this.state.description);
-    const theUserEmail = localStorage.getItem("currentUserEmail");
     console.log(theUserEmail);
   }
   onInputChange = event => {

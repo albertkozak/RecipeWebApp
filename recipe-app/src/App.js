@@ -12,8 +12,8 @@ import "./App.css";
 
 export default class App extends Component {
   render() {
-    const theUserEmail = localStorage.getItem("currentUserEmail");
-    console.log(`UserEmail: ${theUserEmail}`);
+    const isAllowed = sessionStorage.getItem("isAuthorized");
+    console.log(`isAllowed: ${isAllowed}`);
     return (
       <div>
         <Router>
@@ -22,7 +22,7 @@ export default class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Register" component={Register} />
-            {theUserEmail && <Route path="/Add" component={SaveRecipe} />}
+            {isAllowed == "yes" && <Route path="/Add" component={SaveRecipe} />}
           </div>
         </Router>
       </div>
