@@ -6,7 +6,7 @@ class SaveRecipe extends React.Component {
     this.state = {
       title: "",
       description: "",
-      ingredients: ""
+      ingredients: "",
     };
     this.SaveToList = this.SaveToList.bind(this);
   }
@@ -15,13 +15,14 @@ class SaveRecipe extends React.Component {
     var recipe = {
       title: this.state.title,
       description: this.state.description,
-      ingredients: []
+      ingredients: [],
     };
     this.state.ingredients.split("\n").map((item, key) => {
       recipe.ingredients.push({
-        ingredient: item
+        ingredient: item,
       });
     });
+    //console.log(recipe.ingredients);
     const URL = "https://ssdrecipeapi.azurewebsites.net/api/Recipes";
     const token = sessionStorage.getItem("auth-token");
     if (token) {
@@ -30,24 +31,37 @@ class SaveRecipe extends React.Component {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(recipe)
+        body: JSON.stringify(recipe),
       })
         // Data retrieved.
-        .then(json => {
+        .then((json) => {
           alert(JSON.stringify(json));
         })
         // Data not retrieved.
-        .catch(function(error) {
+        .catch(function (error) {
           alert(error);
         });
     }
   }
 
-  onInputChange = event => {
+  press(event) {
+    if (event.keyCode == 13 && !event.shiftKey) {
+      //Stops enter from creating a new line
+      event.preventDefault();
+      submitForm();
+      return true;
+    }
+
+    function submitForm() {
+      document.geek.submit(); //submits the form.
+    }
+  }
+
+  onInputChange = (event) => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -77,6 +91,7 @@ class SaveRecipe extends React.Component {
           id="ingredients"
           placeholder="Ingredients"
           value={this.state.ingredients}
+          onKeyPress={this.press}
           onChange={this.onInputChange}
         />
         <button className="addButton" onClick={this.SaveToList}>
