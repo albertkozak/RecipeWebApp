@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register.js";
 import Home from "./components/Home";
+import Logout from "./components/authentication/Logout";
 import { useEffect, useState } from "react";
 import Recipe from "./components/recipe/Recipe";
 import "./App.css";
@@ -20,9 +21,16 @@ export default class App extends Component {
           <div>
             <Navbar />
             <Route exact path="/" component={Home} />
-            <Route exact path="/Login" component={Login} />
-            <Route exact path="/Register" component={Register} />
-            {isAllowed == "yes" && <Route path="/Add" component={SaveRecipe} />}
+            {isAllowed == "yes" ? (
+              <div>
+                <Route path="/Add" component={SaveRecipe} />
+              </div>
+            ) : (
+              <div>
+                <Route exact path="/Login" component={Login} />
+                <Route exact path="/Register" component={Register} />
+              </div>
+            )}
           </div>
         </Router>
       </div>
