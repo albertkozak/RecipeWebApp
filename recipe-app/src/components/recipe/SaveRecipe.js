@@ -6,53 +6,48 @@ class SaveRecipe extends React.Component {
     this.state = {
       title: "",
       description: "",
-      ingredients: "",
+      ingredients: ""
     };
     this.SaveToList = this.SaveToList.bind(this);
   }
 
   async SaveToList(e) {
-    var ingredientsArray = this.state.ingredients.split("\n");
-
-    console.log(ingredientsArray.length);
-    var ingredientsJsonObj = {};
-    for (var i = 0; i < ingredientsArray.length; i++) {
-      ingredientsJsonObj["ingredient" + (i + 1)] = ingredientsArray[i];
+    var recipe = {
+      title: this.state.title,
+      description: this.state.description,
+      ingredients: []
+    };
+    this.state.ingredients.split("\n").map((item, key) => {
+      recipe.ingredients.push({
+        ingredient: item
+      });
+    });
+    const URL = "https://ssdrecipeapi.azurewebsites.net/api/Recipes";
+    const token = sessionStorage.getItem("auth-token");
+    if (token) {
+      fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(recipe)
+      })
+        // Data retrieved.
+        .then(json => {
+          alert(JSON.stringify(json));
+        })
+        // Data not retrieved.
+        .catch(function(error) {
+          alert(error);
+        });
     }
-    console.log(ingredientsJsonObj);
-
-    // const URL = "https://ssdrecipeapi.azurewebsites.net/api/Recipes";
-    // const token = sessionStorage.getItem("auth-token");
-    // if (token) {
-    //   fetch(URL, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Accept: "application/json",
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //     body: JSON.stringify({
-    //       Title: this.state.title,
-    //       Description: this.state.description,
-    //       Ingredients: ingredientsArray,
-    //     }),
-    //   })
-    //     // Response received.
-    //     .then((response) => response.json())
-    //     // Data retrieved.
-    //     .then((json) => {
-    //       alert(JSON.stringify(json));
-    //     })
-    //     // Data not retrieved.
-    //     .catch(function (error) {
-    //       alert(error);
-    //     });
-    // }
   }
 
-  onInputChange = (event) => {
+  onInputChange = event => {
     this.setState({
-      [event.target.id]: event.target.value,
+      [event.target.id]: event.target.value
     });
   };
 
