@@ -34,12 +34,12 @@ export default class App extends Component {
             {this.state.isAuthorized ? (
               <div>
                 <Route path="/Add" component={SaveRecipe} />
-                <Route path="/Logout" component={Logout} />
               </div>
             ) : (
               <div>
                 <Route exact path="/Login" component={Login} />
                 <Route exact path="/Register" component={Register} />
+                <Route path="/Logout" component={Logout} />
               </div>
             )}
           </div>

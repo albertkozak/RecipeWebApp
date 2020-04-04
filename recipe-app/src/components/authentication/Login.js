@@ -43,9 +43,9 @@ export default function Login(props) {
           //localStorage.setItem("currentUserEmail", email);
           sessionStorage.setItem("isAuthorized", "yes");
           props.history.push("/");
+          window.location.reload(false);
         }
         console.log(res.token);
-        window.location.reload(false);
       })
       .catch((e) => console.log("Unable to sign-in", e));
   }

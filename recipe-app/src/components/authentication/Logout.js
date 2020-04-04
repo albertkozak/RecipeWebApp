@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 class Logout extends Component {
-  componentDidMount() {
+  render() {
     sessionStorage.clear();
     window.location.reload(false);
-  }
-  render() {
+    this.props.history.push("/");
     return <div className="reg-form">loggedOut</div>;
   }
 }

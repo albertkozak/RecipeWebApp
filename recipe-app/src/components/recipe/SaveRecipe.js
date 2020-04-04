@@ -46,19 +46,6 @@ class SaveRecipe extends React.Component {
     }
   }
 
-  press(event) {
-    if (event.keyCode == 13 && !event.shiftKey) {
-      //Stops enter from creating a new line
-      event.preventDefault();
-      submitForm();
-      return true;
-    }
-
-    function submitForm() {
-      document.geek.submit(); //submits the form.
-    }
-  }
-
   onInputChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
@@ -91,7 +78,6 @@ class SaveRecipe extends React.Component {
           id="ingredients"
           placeholder="Ingredients"
           value={this.state.ingredients}
-          onKeyPress={this.press}
           onChange={this.onInputChange}
         />
         <button className="addButton" onClick={this.SaveToList}>
