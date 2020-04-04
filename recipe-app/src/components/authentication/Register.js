@@ -27,7 +27,6 @@ class Register extends React.Component {
         errors: { ...this.state.errors, ...error },
       });
     }
-
     //fetch api
     const URL = "https://ssdrecipeapi.azurewebsites.net/api/auth/register";
     await fetch(URL, {
@@ -43,6 +42,7 @@ class Register extends React.Component {
     })
       .then((json) => {
         //alert(JSON.stringify(json));
+        window.location.reload(false);
         this.props.history.push("/");
       })
       .catch(function (error) {

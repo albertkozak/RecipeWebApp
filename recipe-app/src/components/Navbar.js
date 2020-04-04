@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 
 class Navigation extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isAuthorized: false,
+    };
+  }
+  componentWillMount() {
+    if (sessionStorage.getItem("isAuthorized") == "yes") {
+      this.setState({ isAuthorized: true });
+    }
+  }
   logout(e) {
     if (sessionStorage.getItem("auth-token") != null) {
       sessionStorage.clear();
@@ -8,9 +19,6 @@ class Navigation extends Component {
     }
   }
   render() {
-    const isAllowed = sessionStorage.getItem("isAuthorized");
-    // function Navigation() {
-
     return (
       <header class="header">
         <input class="menu-btn" type="checkbox" id="menu-btn" />
@@ -21,14 +29,13 @@ class Navigation extends Component {
           <li>
             <a href="/">Home</a>
           </li>
-
-          {isAllowed == "yes" ? (
+          {this.state.isAuthorized ? (
             <ul>
               <li>
                 <a href="/Add">Add Recipe</a>
               </li>
               <li>
-                <button onClick={this.logout}>Logout</button>
+                <a href="/Logout">Logout</a>
               </li>
             </ul>
           ) : (

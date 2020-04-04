@@ -1,7 +1,11 @@
-// logout(e) {
-//     alert("Inside logout");
-//     if (sessionStorage.getItem([AUTH_TOKEN]) != null) {
-//       sessionStorage.clear();
-//     }
-//     this.setState({ todos: [], loginMessage: "", token: "" });
-//   }
+import React, { Component } from "react";
+class Logout extends Component {
+  componentDidMount() {
+    sessionStorage.clear();
+    window.location.reload(false);
+  }
+  render() {
+    return <div className="reg-form">loggedOut</div>;
+  }
+}
+export default Logout;
