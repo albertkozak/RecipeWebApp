@@ -262,6 +262,17 @@ h1 {
   width: 80%;
   max-width: 500px;
 }
+
+.saveRecipe input,
+.saveRecipe button {
+  height: 2.2rem;
+  border: none;
+  margin-top: 0.7rem;
+  text-align: left;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  padding-left: 10px;
+}
 /* End Save Recipes */
 
 /* End Navigation */
