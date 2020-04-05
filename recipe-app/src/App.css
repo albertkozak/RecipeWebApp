@@ -254,6 +254,54 @@ h1 {
 }
 /* End Menu Button */
 
+/* Start Save Recipes */
+.saveRecipe {
+  display: flex;
+  flex-direction: column;
+  margin: 12rem auto 0;
+  width: 80%;
+  max-width: 500px;
+}
+
+.saveRecipe input,
+.saveRecipe button {
+  height: 2.2rem;
+  border: none;
+  margin-top: 0.7rem;
+  text-align: left;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.saveRecipe button {
+  padding: 0;
+  color: white;
+  background-color: #1d1d1d;
+  height: 2.6rem;
+  text-align: center;
+  width: 30%;
+  margin: 1rem auto;
+}
+/* End Save Recipes */
+
+/* Ingredients Text Box */
+textarea {
+  background-attachment: local;
+  background-repeat: no-repeat;
+  border: none;
+  height: 12rem;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  line-height: 16px;
+  border-radius: 10px;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  /* background: url(http://i.imgur.com/2cOaJ.png); */
+}
+/* End Ingredients Text Box */
+
 /* End Navigation */
 
 /* Start Media Queries */
@@ -282,13 +330,3 @@ h1 {
 }
 /* End Media Queries */
 /* End Navigation */
-
-/* Text Area */
-textarea {
-  background: url(http://i.imgur.com/2cOaJ.png);
-  background-attachment: local;
-  background-repeat: no-repeat;
-  padding-left: 35px;
-  padding-top: 10px;
-  line-height: 16px;
-}
