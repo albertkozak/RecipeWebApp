@@ -273,6 +273,16 @@ h1 {
   border-radius: 10px;
   padding-left: 10px;
 }
+
+.saveRecipe button {
+  padding: 0;
+  color: white;
+  background-color: #1d1d1d;
+  height: 2.6rem;
+  text-align: center;
+  width: 30%;
+  margin: 1rem auto;
+}
 /* End Save Recipes */
 
 /* End Navigation */
