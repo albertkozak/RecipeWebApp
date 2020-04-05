@@ -285,6 +285,23 @@ h1 {
 }
 /* End Save Recipes */
 
+/* Ingredients Text Box */
+textarea {
+  background-attachment: local;
+  background-repeat: no-repeat;
+  border: none;
+  height: 12rem;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  line-height: 16px;
+  border-radius: 10px;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  /* background: url(http://i.imgur.com/2cOaJ.png); */
+}
+/* End Ingredients Text Box */
+
 /* End Navigation */
 
 /* Start Media Queries */
@@ -313,13 +330,3 @@ h1 {
 }
 /* End Media Queries */
 /* End Navigation */
-
-/* Text Area */
-textarea {
-  background: url(http://i.imgur.com/2cOaJ.png);
-  background-attachment: local;
-  background-repeat: no-repeat;
-  padding-left: 35px;
-  padding-top: 10px;
-  line-height: 16px;
-}
