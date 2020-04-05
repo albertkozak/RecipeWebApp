@@ -254,6 +254,16 @@ h1 {
 }
 /* End Menu Button */
 
+/* Start Save Recipes */
+.saveRecipe {
+  display: flex;
+  flex-direction: column;
+  margin: 12rem auto 0;
+  width: 80%;
+  max-width: 500px;
+}
+/* End Save Recipes */
+
 /* End Navigation */
 
 /* Start Media Queries */
