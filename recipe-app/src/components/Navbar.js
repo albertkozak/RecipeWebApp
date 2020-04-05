@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import logo from "../images/logo3s.png";
 
 class Navigation extends Component {
   constructor() {
@@ -21,6 +22,9 @@ class Navigation extends Component {
   render() {
     return (
       <header class="header">
+        <a href="/" className="logo">
+          <img src={logo} alt="logo" />
+        </a>
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn">
           <span class="navicon" />
