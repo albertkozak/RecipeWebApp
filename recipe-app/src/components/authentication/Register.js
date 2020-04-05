@@ -3,8 +3,8 @@ import FormErrors from "../FormErrors";
 import Validation from "../utilities/Validation";
 
 class Register extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       email: "",
@@ -12,66 +12,57 @@ class Register extends React.Component {
       confirmpassword: "",
       errors: {
         blankfield: false,
-        matchedpassword: false
-      }
+        matchedpassword: false,
+      },
     };
   }
 
-  handleRegister = async event => {
+  handleRegister = async (event) => {
     event.preventDefault();
-
     //Form validation
     this.clearErrors();
     const error = Validation(event, this.state);
     if (error) {
       this.setState({
-        errors: { ...this.state.errors, ...error }
+        errors: { ...this.state.errors, ...error },
       });
     }
-    try {
-      //fetch api
-      const URL = "https://ssdrecipeapi.azurewebsites.net/api/auth/register";
-      await fetch(URL, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          Email: this.state.email,
-          Password: this.state.password
-        })
+    //fetch api
+    const URL = "https://ssdrecipeapi.azurewebsites.net/api/auth/register";
+    await fetch(URL, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Email: this.state.email,
+        Password: this.state.password,
+      }),
+    })
+      .then((json) => {
+        //alert(JSON.stringify(json));
+        window.location.reload(false);
+        this.props.history.push("/");
       })
-        .then(response => response.json())
-        .then(json => {
-          alert(JSON.stringify(json));
-          this.props.history.push("/");
-        });
-    } catch (error) {
-      //check if error has a message property, if not add one.
-      let err = null;
-      !error.message ? (err = { message: error }) : (err = error);
-      //set form error as a cognito error
-      this.setState({
-        errors: {
-          ...this.state.errors
-        }
+      .catch(function (error) {
+        alert(error);
       });
-    }
+    sessionStorage.setItem("isAuthorized", "yes");
   };
 
   clearErrors = () => {
     this.setState({
       errors: {
         blankfield: false,
-        matchedpassword: false
-      }
+        matchedpassword: false,
+      },
     });
   };
 
-  onInputChange = event => {
+  onInputChange = (event) => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     });
   };
 
