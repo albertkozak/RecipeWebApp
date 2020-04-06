@@ -36,9 +36,18 @@ export default function ListRecipes() {
     getRecipe();
   }, []);
 
-  return (
-    <div>
-      <p></p>
-    </div>
-  );
+  listRecipe.map(console.log);
+return(
+  
+    listRecipe.map((list) => {
+      console.log(list);
+      return (
+        <div className='reg-form'>
+          <h4>{list.title}</h4>
+          <ul>{list.description}</ul>
+          <ul>{}</ul>
+        </div>
+      )
+    })
+  )
 }
