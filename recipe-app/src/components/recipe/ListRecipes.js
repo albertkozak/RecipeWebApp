@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function ListRecipes() {
+export default function ListRecipes(props) {
   const [listRecipe, setListRecipe] = useState([]);
 
   const URL = "https://ssdrecipeapi.azurewebsites.net/api/Recipes";
@@ -41,7 +41,10 @@ export default function ListRecipes() {
   return listRecipe.map((list) => {
     console.log(list);
     return (
-      <div className="reg-form">
+      <div
+        onClick={() => props.history.push(`/Recipe/${list.id}`)}
+        className="reg-form"
+      >
         <h2>{list.title}</h2>
         <h4>{list.description}</h4>
         {/* <h5>{list.ingredients[0].ingredient}</h5>

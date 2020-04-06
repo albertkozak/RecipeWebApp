@@ -32,17 +32,17 @@ export default class App extends Component {
         <Router>
           <div>
             <Navbar />
-            <Route exact path='/' component={Home} />
+            <Route exact path="/" component={Home} />
             {this.state.isAuthorized ? (
               <div>
-                <Route path='/Add' component={SaveRecipe} />
-                <Route path='/List' component={ListRecipes} />
+                <Route path="/Recipe/:id?" component={SaveRecipe} />
+                <Route path="/List" component={ListRecipes} />
               </div>
             ) : (
               <div>
-                <Route exact path='/Login' component={Login} />
-                <Route exact path='/Register' component={Register} />
-                <Route path='/Logout' component={Logout} />
+                <Route exact path="/Login" component={Login} />
+                <Route exact path="/Register" component={Register} />
+                <Route path="/Logout" component={Logout} />
               </div>
             )}
           </div>
