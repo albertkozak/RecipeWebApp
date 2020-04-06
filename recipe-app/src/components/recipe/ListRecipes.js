@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function ListRecipes() {
-  const [listRecipe, setListRecipe] = useState({});
+  const [listRecipe, setListRecipe] = useState([]);
 
   const URL = "https://ssdrecipeapi.azurewebsites.net/api/Recipes";
 
@@ -22,7 +22,7 @@ export default function ListRecipes() {
         // Data retrieved.
         .then((json) => {
           console.log(json);
-          //   setListRecipe(json);
+          setListRecipe(json);
           //  alert(JSON.stringify(json));
         })
         // Data not retrieved.
@@ -34,7 +34,7 @@ export default function ListRecipes() {
 
   useEffect(() => {
     getRecipe();
-  });
+  }, []);
 
   return (
     <div>
