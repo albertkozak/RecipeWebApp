@@ -21,34 +21,37 @@ class Navigation extends Component {
   }
   render() {
     return (
-      <header class="header">
-        <a href="/" className="logo">
-          <img src={logo} alt="logo" />
+      <header class='header'>
+        <a href='/' className='logo'>
+          <img src={logo} alt='logo' />
         </a>
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
-        <label class="menu-icon" for="menu-btn">
-          <span class="navicon" />
+        <input class='menu-btn' type='checkbox' id='menu-btn' />
+        <label class='menu-icon' for='menu-btn'>
+          <span class='navicon' />
         </label>
-        <ul class="menu">
+        <ul class='menu'>
           <li>
-            <a href="/">Home</a>
+            <a href='/'>Home</a>
           </li>
           {this.state.isAuthorized ? (
             <ul>
               <li>
-                <a href="/Add">Add Recipe</a>
+                <a href='/Add'>Add Recipe</a>
               </li>
               <li>
-                <a href="/Logout">Logout</a>
+                <a href='/List'>List Recipes</a>
+              </li>
+              <li>
+                <a href='/Logout'>Logout</a>
               </li>
             </ul>
           ) : (
             <ul>
               <li>
-                <a href="/login">Login</a>
+                <a href='/login'>Login</a>
               </li>
               <li>
-                <a href="/register">Register</a>
+                <a href='/register'>Register</a>
               </li>
             </ul>
           )}

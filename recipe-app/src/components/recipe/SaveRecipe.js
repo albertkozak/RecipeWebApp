@@ -37,7 +37,8 @@ class SaveRecipe extends React.Component {
       })
         // Data retrieved.
         .then((json) => {
-          alert(JSON.stringify(json));
+          // alert(JSON.stringify(json));
+          this.props.history.push("/");
         })
         // Data not retrieved.
         .catch(function (error) {

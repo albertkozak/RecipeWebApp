@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ListRecipes from "./components/recipe/ListRecipes";
 import SaveRecipe from "./components/recipe/SaveRecipe";
 import Navbar from "./components/Navbar";
 import Login from "./components/authentication/Login";
@@ -31,16 +32,17 @@ export default class App extends Component {
         <Router>
           <div>
             <Navbar />
-            <Route exact path="/" component={Home} />
+            <Route exact path='/' component={Home} />
             {this.state.isAuthorized ? (
               <div>
-                <Route path="/Add" component={SaveRecipe} />
+                <Route path='/Add' component={SaveRecipe} />
+                <Route path='/List' component={ListRecipes} />
               </div>
             ) : (
               <div>
-                <Route exact path="/Login" component={Login} />
-                <Route exact path="/Register" component={Register} />
-                <Route path="/Logout" component={Logout} />
+                <Route exact path='/Login' component={Login} />
+                <Route exact path='/Register' component={Register} />
+                <Route path='/Logout' component={Logout} />
               </div>
             )}
           </div>
