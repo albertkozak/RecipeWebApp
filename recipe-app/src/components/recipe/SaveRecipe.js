@@ -54,33 +54,33 @@ class SaveRecipe extends React.Component {
 
   render() {
     return (
-      <div className="reg-form">
+      <div className='reg-form'>
         <input
-          className="input"
-          type="text"
-          id="title"
-          placeholder="Title"
+          className='input'
+          type='text'
+          id='title'
+          placeholder='Title'
           value={this.state.title}
           onChange={this.onInputChange}
         />
         <input
-          className="input"
-          type="text"
-          id="description"
-          placeholder="Description"
+          className='input'
+          type='text'
+          id='description'
+          placeholder='Description'
           value={this.state.description}
           onChange={this.onInputChange}
         />
         <textarea
-          wrap="hard"
-          className="input"
-          type="text"
-          id="ingredients"
-          placeholder="Ingredients"
+          wrap='hard'
+          className='input'
+          type='text'
+          id='ingredients'
+          placeholder='Ingredients'
           value={this.state.ingredients}
           onChange={this.onInputChange}
         />
-        <button className="addButton" onClick={this.SaveToList}>
+        <button className='addButton' onClick={this.SaveToList}>
           Add Recipe
         </button>
       </div>

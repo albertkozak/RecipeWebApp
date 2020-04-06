@@ -45,7 +45,7 @@ export default function Login(props) {
           props.history.push("/");
           window.location.reload(false);
         }
-        console.log(res.token);
+        // console.log(res.token);
       })
       .catch((e) => console.log("Unable to sign-in", e));
   }
