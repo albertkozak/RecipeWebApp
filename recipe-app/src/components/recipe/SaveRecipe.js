@@ -1,44 +1,87 @@
 import React, { Component } from "react";
 
+const BASE_URL = "https://ssdrecipeapi.azurewebsites.net/api/Recipes";
+const TOKEN = sessionStorage.getItem("auth-token");
+
 class SaveRecipe extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       title: "",
       description: "",
       ingredients: "",
     };
-    this.SaveToList = this.SaveToList.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async SaveToList(e) {
+  componentDidMount() {
+    if (this.props.match.params.id) {
+      if (TOKEN) {
+        fetch(`${BASE_URL}/${this.props.match.params.id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${TOKEN}`,
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((json) => {
+            if (json) {
+              var ingredients = "";
+              if (json.ingredients) {
+                ingredients = json.ingredients
+                  .map((item) => `${item.ingredient}\n`)
+                  .join("");
+              }
+              this.setState({
+                title: json.title,
+                description: json.description,
+                ingredients: ingredients,
+              });
+            }
+          })
+          // Data not retrieved.
+          .catch(function (error) {
+            alert(error);
+          });
+      }
+    }
+  }
+
+  handleSubmit() {
     var recipe = {
       title: this.state.title,
       description: this.state.description,
       ingredients: [],
     };
     this.state.ingredients.split("\n").map((item, key) => {
-      recipe.ingredients.push({
-        ingredient: item,
-      });
+      if (item) {
+        recipe.ingredients.push({
+          ingredient: item,
+        });
+      }
     });
-    //console.log(recipe.ingredients);
-    const URL = "https://ssdrecipeapi.azurewebsites.net/api/Recipes";
-    const token = sessionStorage.getItem("auth-token");
-    if (token) {
-      fetch(URL, {
-        method: "POST",
+    var url = BASE_URL;
+    if (this.props.match.params.id) {
+      recipe.id = this.props.match.params.id;
+      url += `/${this.props.match.params.id}`;
+    }
+    if (TOKEN) {
+      fetch(url, {
+        method: this.props.match.params.id ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${TOKEN}`,
         },
         body: JSON.stringify(recipe),
       })
         // Data retrieved.
         .then((json) => {
-          // alert(JSON.stringify(json));
-          this.props.history.push("/");
+          this.props.history.push("/List");
         })
         // Data not retrieved.
         .catch(function (error) {
@@ -83,8 +126,8 @@ class SaveRecipe extends React.Component {
             value={this.state.ingredients}
             onChange={this.onInputChange}
           />
-          <button className="addButton" onClick={this.SaveToList}>
-            Save
+          <button className="addButton" onClick={this.handleSubmit}>
+            {this.props.match.params.id ? "Update" : "Save"}
           </button>
         </div>
       </div>
