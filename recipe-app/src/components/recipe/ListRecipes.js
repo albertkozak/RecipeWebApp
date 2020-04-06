@@ -7,6 +7,7 @@ export default function ListRecipes() {
 
   function getRecipe() {
     const token = sessionStorage.getItem("auth-token");
+    console.log(token);
     if (token) {
       fetch(URL, {
         method: "GET",
@@ -21,7 +22,7 @@ export default function ListRecipes() {
         })
         // Data retrieved.
         .then((json) => {
-          console.log(json);
+          //console.log(json);
           setListRecipe(json);
           //  alert(JSON.stringify(json));
         })
@@ -36,18 +37,22 @@ export default function ListRecipes() {
     getRecipe();
   }, []);
 
-  listRecipe.map(console.log);
-return(
-  
-    listRecipe.map((list) => {
-      console.log(list);
-      return (
-        <div className='reg-form'>
-          <h4>{list.title}</h4>
-          <ul>{list.description}</ul>
-          <ul>{}</ul>
-        </div>
-      )
-    })
-  )
+  //listRecipe.map(console.log);
+  return listRecipe.map((list) => {
+    console.log(list);
+    return (
+      <div className="reg-form">
+        <h2>{list.title}</h2>
+        <h4>{list.description}</h4>
+        {/* <h5>{list.ingredients[0].ingredient}</h5>
+        <h5>{list.ingredients[1].ingredient}</h5>
+        <h5>{list.ingredients[2].ingredient}</h5> */}
+        <ul>
+          {list.ingredients.map((item) => (
+            <li>{item.ingredient}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  });
 }
