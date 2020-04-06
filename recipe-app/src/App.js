@@ -6,6 +6,7 @@ import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register.js";
 import Home from "./components/Home";
 import Logout from "./components/authentication/Logout";
+import Footer from "./components/Footer";
 import "./App.css";
 //require("dotenv").config();
 
@@ -44,6 +45,7 @@ export default class App extends Component {
             )}
           </div>
         </Router>
+        <Footer />
       </div>
     );
   }
