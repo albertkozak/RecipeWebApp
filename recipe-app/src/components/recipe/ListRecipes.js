@@ -7,7 +7,7 @@ export default function ListRecipes(props) {
 
   function getRecipe() {
     const token = sessionStorage.getItem("auth-token");
-    console.log(token);
+    // console.log(token);
     if (token) {
       fetch(URL, {
         method: "GET",
@@ -39,17 +39,14 @@ export default function ListRecipes(props) {
 
   //listRecipe.map(console.log);
   return listRecipe.map((list) => {
-    console.log(list);
+    // console.log(list);
     return (
       <div
         onClick={() => props.history.push(`/Recipe/${list.id}`)}
-        className="reg-form"
+        className='reg-form'
       >
         <h2>{list.title}</h2>
         <h4>{list.description}</h4>
-        {/* <h5>{list.ingredients[0].ingredient}</h5>
-        <h5>{list.ingredients[1].ingredient}</h5>
-        <h5>{list.ingredients[2].ingredient}</h5> */}
         <ul>
           {list.ingredients.map((item) => (
             <li>{item.ingredient}</li>

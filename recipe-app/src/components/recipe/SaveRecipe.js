@@ -12,6 +12,7 @@ class SaveRecipe extends React.Component {
       ingredients: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -89,6 +90,44 @@ class SaveRecipe extends React.Component {
         });
     }
   }
+  handleDelete() {
+    var recipe = {
+      title: this.state.title,
+      description: this.state.description,
+      ingredients: [],
+    };
+    this.state.ingredients.split("\n").map((item, key) => {
+      if (item) {
+        recipe.ingredients.push({
+          ingredient: item,
+        });
+      }
+    });
+    var url = BASE_URL;
+    if (this.props.match.params.id) {
+      recipe.id = this.props.match.params.id;
+      url += `/${this.props.match.params.id}`;
+    }
+    if (TOKEN) {
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${TOKEN}`,
+        },
+        body: JSON.stringify(recipe),
+      })
+        // Data retrieved.
+        .then((json) => {
+          this.props.history.push("/List");
+        })
+        // Data not retrieved.
+        .catch(function (error) {
+          alert(error);
+        });
+    }
+  }
 
   onInputChange = (event) => {
     this.setState({
@@ -98,36 +137,39 @@ class SaveRecipe extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="saveRecipe">
+      <div className='App'>
+        <div className='saveRecipe'>
           <h1>Add Recipe</h1>
           <input
-            className="input"
-            type="text"
-            id="title"
-            placeholder="Title"
+            className='input'
+            type='text'
+            id='title'
+            placeholder='Title'
             value={this.state.title}
             onChange={this.onInputChange}
           />
           <input
-            className="input"
-            type="text"
-            id="description"
-            placeholder="Description"
+            className='input'
+            type='text'
+            id='description'
+            placeholder='Description'
             value={this.state.description}
             onChange={this.onInputChange}
           />
           <textarea
-            wrap="hard"
-            className="input"
-            type="text"
-            id="ingredients"
-            placeholder="Ingredients"
+            wrap='hard'
+            className='input'
+            type='text'
+            id='ingredients'
+            placeholder='Ingredients'
             value={this.state.ingredients}
             onChange={this.onInputChange}
           />
-          <button className="addButton" onClick={this.handleSubmit}>
+          <button className='addButton' onClick={this.handleSubmit}>
             {this.props.match.params.id ? "Update" : "Save"}
+          </button>
+          <button className='deleteButton' onClick={this.handleDelete}>
+            {this.props.match.params.id ? "Delete" : "Delete"}
           </button>
         </div>
       </div>
