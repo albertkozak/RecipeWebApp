@@ -45,6 +45,11 @@ h1 {
   color: white;
   border-radius: 10px;
 }
+
+.search-button:hover {
+  background-color: #1d1d1d;
+  color: #f8cb15;
+}
 /* End Search */
 
 .recipes {
@@ -80,11 +85,17 @@ h1 {
 }
 
 .login button {
+  font-family: "Fjalla One";
   padding: 0;
   color: white;
   background-color: #1d1d1d;
   width: 100%;
   height: 2.4rem;
+}
+
+.login button:hover {
+  background-color: #1d1d1d;
+  color: #f8cb15;
 }
 
 .control {
@@ -119,10 +130,16 @@ h1 {
 }
 
 .reg-form button {
+  font-family: "Fjalla One";
   padding: 0;
   color: white;
   background-color: #1d1d1d;
   height: 2.6rem;
+}
+
+.reg-form button:hover {
+  background-color: #1d1d1d;
+  color: #f8cb15;
 }
 /* End Registration */
 
@@ -275,12 +292,18 @@ h1 {
 }
 
 .saveRecipe button {
+  font-family: "Fjalla One";
   padding: 0;
   color: white;
   background-color: #1d1d1d;
   height: 2.6rem;
   text-align: center;
   width: 30%;
+}
+
+.saveRecipe button:hover {
+  background-color: #1d1d1d;
+  color: #f8cb15;
 }
 
 .addButton {
@@ -347,6 +370,11 @@ h4 {
   padding: 10px 25px;
   color: white;
   border-radius: 10px;
+}
+
+.editButton:hover {
+  background-color: #1d1d1d;
+  color: #f8cb15;
 }
 
 /* Combined Styling Edit / Delete Buttons */
