@@ -38,24 +38,32 @@ export default function ListRecipes(props) {
   }, []);
 
   //listRecipe.map(console.log);
-  return listRecipe.map((list) => {
-    console.log(list);
-    return (
-      <div
-        onClick={() => props.history.push(`/Recipe/${list.id}`)}
-        className="reg-form"
-      >
-        <h2>{list.title}</h2>
-        <h4>{list.description}</h4>
-        {/* <h5>{list.ingredients[0].ingredient}</h5>
+  return (
+    <div className="App">
+      <div className="listRecipe">
+        <h1>My Recipes</h1>
+        <div className="recipes">
+          {listRecipe.map((list) => {
+            console.log(list);
+            return (
+              <div className="recipeList">
+                <div onClick={() => props.history.push(`/Recipe/${list.id}`)}>
+                  <h2>{list.title}</h2>
+                  <h4>{list.description}</h4>
+                  {/* <h5>{list.ingredients[0].ingredient}</h5>
         <h5>{list.ingredients[1].ingredient}</h5>
         <h5>{list.ingredients[2].ingredient}</h5> */}
-        <ul>
-          {list.ingredients.map((item) => (
-            <li>{item.ingredient}</li>
-          ))}
-        </ul>
+                  <ul>
+                    {list.ingredients.map((item) => (
+                      <li>{item.ingredient}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    );
-  });
+    </div>
+  );
 }
