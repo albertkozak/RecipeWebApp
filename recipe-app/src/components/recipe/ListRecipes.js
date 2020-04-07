@@ -7,7 +7,7 @@ export default function ListRecipes(props) {
 
   function getRecipe() {
     const token = sessionStorage.getItem("auth-token");
-    console.log(token);
+    // console.log(token);
     if (token) {
       fetch(URL, {
         method: "GET",
@@ -28,7 +28,7 @@ export default function ListRecipes(props) {
         })
         // Data not retrieved.
         .catch(function (error) {
-          alert(error);
+          // alert(error);
         });
     }
   }
