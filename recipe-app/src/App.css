@@ -304,6 +304,40 @@ textarea {
 
 /* End Navigation */
 
+/* Start List Recipes Styling */
+.listRecipe {
+  margin: 12rem auto 0;
+}
+
+.listOfRecipe {
+  display: flex;
+  flex: 1;
+}
+
+.recipeList {
+  border-radius: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: white;
+  width: 450px;
+  padding: 30px 0;
+}
+
+.recipeList h2,
+h4 {
+  text-align: center;
+  padding: 0 5px;
+}
+
+.recipeList li {
+  width: 75%;
+  margin: 0 auto;
+}
+
+/* End List Recipes Styling */
+
 /* Start Footer */
 .footer-container {
   display: flex;
