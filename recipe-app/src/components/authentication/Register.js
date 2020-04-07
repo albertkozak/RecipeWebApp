@@ -1,4 +1,4 @@
-﻿﻿import React, { Component } from "react";
+﻿import React from "react";
 import FormErrors from "../FormErrors";
 import Validation from "../utilities/Validation";
 
@@ -41,7 +41,6 @@ class Register extends React.Component {
       }),
     })
       .then((json) => {
-        //alert(JSON.stringify(json));
         window.location.reload(false);
         this.props.history.push("/");
       })
