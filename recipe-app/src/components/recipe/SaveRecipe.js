@@ -137,40 +137,42 @@ class SaveRecipe extends React.Component {
 
   render() {
     return (
-      <div className='App'>
-        <div className='saveRecipe'>
+      <div className="App">
+        <div className="saveRecipe">
           <h1>Add Recipe</h1>
           <input
-            className='input'
-            type='text'
-            id='title'
-            placeholder='Title'
+            className="input"
+            type="text"
+            id="title"
+            placeholder="Title"
             value={this.state.title}
             onChange={this.onInputChange}
           />
           <input
-            className='input'
-            type='text'
-            id='description'
-            placeholder='Description'
+            className="input"
+            type="text"
+            id="description"
+            placeholder="Description"
             value={this.state.description}
             onChange={this.onInputChange}
           />
           <textarea
-            wrap='hard'
-            className='input'
-            type='text'
-            id='ingredients'
-            placeholder='Ingredients'
+            wrap="hard"
+            className="input"
+            type="text"
+            id="ingredients"
+            placeholder="Ingredients"
             value={this.state.ingredients}
             onChange={this.onInputChange}
           />
-          <button className='addButton' onClick={this.handleSubmit}>
-            {this.props.match.params.id ? "Update" : "Save"}
-          </button>
-          <button className='deleteButton' onClick={this.handleDelete}>
-            {this.props.match.params.id ? "Delete" : "Delete"}
-          </button>
+          <div className="buttons">
+            <button className="addButton" onClick={this.handleSubmit}>
+              {this.props.match.params.id ? "Update" : "Save"}
+            </button>
+            <button className="deleteButton" onClick={this.handleDelete}>
+              {this.props.match.params.id ? "Delete" : "Delete"}
+            </button>
+          </div>
         </div>
       </div>
     );
