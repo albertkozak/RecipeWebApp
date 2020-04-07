@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Recipe from "./recipe/Recipe";
-//import "./App.css";
-//require("dotenv").config();
 
 const Home = (props) => {
   // Wasted over an hour attempting to hide the APP ID + KEY in .env but kept running into a CORS error (I'll obtain a new ID + KEY later once resolved)
@@ -15,23 +13,26 @@ const Home = (props) => {
   const [query, setQuery] = useState("egg");
 
   useEffect(() => {
-    getRecipes();
+    fetch(
+      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        setRecipes(json.hits);
+      })
+      // Data not retrieved.
+      .catch(function (error) {
+        console.log(error);
+      });
   }, [query]);
 
-  const getRecipes = async () => {
-    const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-    );
-    const data = await response.json();
-    setRecipes(data.hits);
-    console.log(data.hits);
-  };
-
-  const updateSearch = e => {
+  const updateSearch = (e) => {
     setSearch(e.target.value);
   };
 
-  const getSearch = e => {
+  const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
     setSearch("");
@@ -51,7 +52,7 @@ const Home = (props) => {
         </button>
       </form>
       <div className="recipes">
-        {recipes.map(recipe => (
+        {recipes.map((recipe) => (
           <Recipe
             key={recipe.recipe.label}
             title={recipe.recipe.label}

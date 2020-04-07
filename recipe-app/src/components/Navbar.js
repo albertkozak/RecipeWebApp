@@ -8,8 +8,8 @@ class Navigation extends Component {
       isAuthorized: false,
     };
   }
-  componentWillMount() {
-    if (sessionStorage.getItem("isAuthorized") == "yes") {
+  componentDidMount() {
+    if (sessionStorage.getItem("isAuthorized") === "yes") {
       this.setState({ isAuthorized: true });
     }
   }
@@ -21,15 +21,15 @@ class Navigation extends Component {
   }
   render() {
     return (
-      <header class="header">
+      <header className="header">
         <a href="/" className="logo">
           <img src={logo} alt="logo" />
         </a>
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
-        <label class="menu-icon" for="menu-btn">
-          <span class="navicon" />
+        <input className="menu-btn" type="checkbox" id="menu-btn" />
+        <label className="menu-icon" htmlFor="menu-btn">
+          <span className="navicon" />
         </label>
-        <ul class="menu">
+        <ul className="menu">
           <li>
             <a href="/">Home</a>
           </li>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import ListRecipes from "./components/recipe/ListRecipes";
 import SaveRecipe from "./components/recipe/SaveRecipe";
 import Navbar from "./components/Navbar";
@@ -9,7 +9,6 @@ import Home from "./components/Home";
 import Logout from "./components/authentication/Logout";
 import Footer from "./components/Footer";
 import "./App.css";
-//require("dotenv").config();
 
 export default class App extends Component {
   constructor() {
@@ -19,14 +18,11 @@ export default class App extends Component {
     };
   }
   componentDidMount() {
-    console.log("start");
-    if (sessionStorage.getItem("isAuthorized") == "yes") {
+    if (sessionStorage.getItem("isAuthorized") === "yes") {
       this.setState({ isAuthorized: true });
     }
   }
   render() {
-    const isAllowed = sessionStorage.getItem("isAuthorized");
-    console.log(`isAllowed: ${isAllowed}`);
     return (
       <div>
         <Router>

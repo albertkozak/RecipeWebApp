@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Home from "../Home.js";
 import FormErrors from "../FormErrors";
-// import Validation from "../utilities/Validation ";
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
@@ -20,8 +18,6 @@ export default function Login(props) {
   }
 
   async function handleLogin(e) {
-    console.log(email);
-
     e.preventDefault();
 
     //JWT Validation
@@ -40,22 +36,12 @@ export default function Login(props) {
       .then((res) => {
         if (res.status === "OK") {
           sessionStorage.setItem("auth-token", res.token);
-          //localStorage.setItem("currentUserEmail", email);
           sessionStorage.setItem("isAuthorized", "yes");
           props.history.push("/");
           window.location.reload(false);
         }
-        // console.log(res.token);
       })
       .catch((e) => console.log("Unable to sign-in", e));
-  }
-
-  function clearErrors() {
-    setErrors({
-      errors: {
-        blankfield: false,
-      },
-    });
   }
 
   return (
@@ -64,7 +50,6 @@ export default function Login(props) {
         <FormErrors formErrors={errors} />
         <h1>Login</h1>
         <form onSubmit={handleLogin}>
-          {/* enables enter to work upon submit*/}
           <input
             type="email"
             name="email"

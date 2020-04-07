@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const BASE_URL = "https://ssdrecipeapi.azurewebsites.net/api/Recipes";
 const TOKEN = sessionStorage.getItem("auth-token");
@@ -53,18 +53,7 @@ class SaveRecipe extends React.Component {
   }
 
   handleSubmit() {
-    var recipe = {
-      title: this.state.title,
-      description: this.state.description,
-      ingredients: [],
-    };
-    this.state.ingredients.split("\n").map((item, key) => {
-      if (item) {
-        recipe.ingredients.push({
-          ingredient: item,
-        });
-      }
-    });
+    var recipe = this.buildRecipeObject();
     var url = BASE_URL;
     if (this.props.match.params.id) {
       recipe.id = this.props.match.params.id;
@@ -91,18 +80,7 @@ class SaveRecipe extends React.Component {
     }
   }
   handleDelete() {
-    var recipe = {
-      title: this.state.title,
-      description: this.state.description,
-      ingredients: [],
-    };
-    this.state.ingredients.split("\n").map((item, key) => {
-      if (item) {
-        recipe.ingredients.push({
-          ingredient: item,
-        });
-      }
-    });
+    var recipe = this.buildRecipeObject();
     var url = BASE_URL;
     if (this.props.match.params.id) {
       recipe.id = this.props.match.params.id;
@@ -128,6 +106,23 @@ class SaveRecipe extends React.Component {
         });
     }
   }
+
+  buildRecipeObject = () => {
+    var recipe = {
+      title: this.state.title,
+      description: this.state.description,
+      ingredients: [],
+    };
+    this.state.ingredients
+      .split("\n")
+      .filter((i) => i)
+      .map((item, key) => {
+        return recipe.ingredients.push({
+          ingredient: item,
+        });
+      });
+    return recipe;
+  };
 
   onInputChange = (event) => {
     this.setState({

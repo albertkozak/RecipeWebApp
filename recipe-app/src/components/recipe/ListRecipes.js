@@ -7,7 +7,6 @@ export default function ListRecipes(props) {
 
   function getRecipe() {
     const token = sessionStorage.getItem("auth-token");
-    // console.log(token);
     if (token) {
       fetch(URL, {
         method: "GET",
@@ -22,13 +21,11 @@ export default function ListRecipes(props) {
         })
         // Data retrieved.
         .then((json) => {
-          //console.log(json);
           setListRecipe(json);
-          //  alert(JSON.stringify(json));
         })
         // Data not retrieved.
         .catch(function (error) {
-          // alert(error);
+          console.log(error);
         });
     }
   }
@@ -37,28 +34,25 @@ export default function ListRecipes(props) {
     getRecipe();
   }, []);
 
-  //listRecipe.map(console.log);
   return (
     <div className="App">
       <div className="listRecipe">
         <h1>My Recipes</h1>
         <div className="recipes">
-          {listRecipe.map((list) => {
-            console.log(list);
+          {listRecipe.map((list, index) => {
             return (
-              <div className="recipeList">
+              <div key={index} className="recipeList">
                 <h2>{list.title}</h2>
                 <h4>{list.description}</h4>
                 <ul>
-                  {list.ingredients.map((item) => (
-                    <li>{item.ingredient}</li>
+                  {list.ingredients.map((item, i) => (
+                    <li key={i}>{item.ingredient}</li>
                   ))}
                 </ul>
                 <button
                   className="editButton"
                   onClick={() => props.history.push(`/Recipe/${list.id}`)}
                 >
-                  {" "}
                   Edit
                 </button>
               </div>
