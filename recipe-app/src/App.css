@@ -22,7 +22,7 @@ h1 {
 
 /* Start Search */
 .search-form {
-  padding: 2.8rem 0;
+  padding: 2.8rem 0 0;
   min-height: 10vh;
   display: flex;
   justify-content: center;
@@ -55,7 +55,7 @@ h1 {
 
 /* Start Login */
 .login {
-  padding-top: 12rem;
+  padding-top: 8rem;
   text-align: center;
   margin: 0 auto;
 }
@@ -115,7 +115,7 @@ h1 {
 }
 
 .reg-form {
-  padding-top: 12rem;
+  padding-top: 8rem;
 }
 
 .reg-form button {
@@ -258,7 +258,7 @@ h1 {
 .saveRecipe {
   display: flex;
   flex-direction: column;
-  margin: 12rem auto 0;
+  margin: 7rem auto 0;
   width: 80%;
   max-width: 500px;
 }
@@ -281,7 +281,10 @@ h1 {
   height: 2.6rem;
   text-align: center;
   width: 30%;
-  margin: 1rem auto;
+}
+
+.addButton {
+  margin-right: 1rem;
 }
 /* End Save Recipes */
 
@@ -291,7 +294,7 @@ textarea {
   background-attachment: local;
   background-repeat: no-repeat;
   border: solid 1px white;
-  height: 12rem;
+  height: 14rem;
   background-color: white;
   margin-top: 0.7rem;
   font-size: 0.8rem;
@@ -306,7 +309,7 @@ textarea {
 
 /* Start List Recipes Styling */
 .listRecipe {
-  margin: 12rem auto 0;
+  margin: 8rem auto 0;
 }
 
 .listOfRecipe {
@@ -334,6 +337,22 @@ h4 {
 .recipeList li {
   width: 75%;
   margin: 0 auto;
+}
+
+.editButton {
+  margin: 0 auto;
+  font-family: "Fjalla One";
+  background-color: #1d1d1d;
+  border: none;
+  padding: 10px 25px;
+  color: white;
+  border-radius: 10px;
+}
+
+/* Combined Styling Edit / Delete Buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
 }
 
 /* End List Recipes Styling */

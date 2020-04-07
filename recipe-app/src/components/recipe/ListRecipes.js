@@ -47,18 +47,20 @@ export default function ListRecipes(props) {
             console.log(list);
             return (
               <div className="recipeList">
-                <div onClick={() => props.history.push(`/Recipe/${list.id}`)}>
-                  <h2>{list.title}</h2>
-                  <h4>{list.description}</h4>
-                  {/* <h5>{list.ingredients[0].ingredient}</h5>
-        <h5>{list.ingredients[1].ingredient}</h5>
-        <h5>{list.ingredients[2].ingredient}</h5> */}
-                  <ul>
-                    {list.ingredients.map((item) => (
-                      <li>{item.ingredient}</li>
-                    ))}
-                  </ul>
-                </div>
+                <h2>{list.title}</h2>
+                <h4>{list.description}</h4>
+                <ul>
+                  {list.ingredients.map((item) => (
+                    <li>{item.ingredient}</li>
+                  ))}
+                </ul>
+                <button
+                  className="editButton"
+                  onClick={() => props.history.push(`/Recipe/${list.id}`)}
+                >
+                  {" "}
+                  Edit
+                </button>
               </div>
             );
           })}
