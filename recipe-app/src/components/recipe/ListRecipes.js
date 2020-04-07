@@ -28,7 +28,7 @@ export default function ListRecipes(props) {
         })
         // Data not retrieved.
         .catch(function (error) {
-          alert(error);
+          // alert(error);
         });
     }
   }
@@ -52,6 +52,7 @@ export default function ListRecipes(props) {
             <li>{item.ingredient}</li>
           ))}
         </ul>
+        <p>Click Recipe to edit or delete from list</p>
       </div>
     );
   });
